@@ -14,72 +14,45 @@ The enhanced protocol proposes multi-metric routing, precomputed backup paths, a
 
 Traditional RIP only considers hop count when selecting routes, often leading to poor performance in modern networks.
 Our solution introduces a compound cost formula that incorporates multiple performance factors:
+📐 Compound Cost Formula
 
-𝑀
-𝑒
-𝑡
-𝑟
-𝑖
-𝑐
+Our solution introduces a compound cost formula that incorporates multiple performance factors:
+
+Metric
 =
 𝑎
 0
 ⋅
-𝐻
-𝑜
-𝑝
-𝐶
-𝑜
-𝑢
-𝑛
-𝑡
+HopCount
+  
 +
+  
 𝑎
 1
 ⋅
 1
-𝐵
-𝑎
-𝑛
-𝑑
-𝑤
-𝑖
-𝑑
-𝑡
-ℎ
+Bandwidth
+  
 +
+  
 𝑎
 2
 ⋅
-𝐷
-𝑒
-𝑙
-𝑎
-𝑦
+Delay
+  
 +
+  
 𝑎
 3
 ⋅
-𝐽
-𝑖
-𝑡
-𝑡
-𝑒
-𝑟
+Jitter
+  
 +
+  
 𝑎
 4
 ⋅
-𝑃
-𝑎
-𝑐
-𝑘
-𝑒
-𝑡
-𝐿
-𝑜
-𝑠
-𝑠
+PacketLoss
 Metric=a
 0
 	​
@@ -107,17 +80,19 @@ Bandwidth
 
 ⋅PacketLoss
 
-Hop Count: Basic RIP-style metric (1–15)
+Where:
 
-Bandwidth: Higher bandwidth is prioritized by using the inverse value
+Hop Count – Basic RIP-style metric (1–15)
 
-Delay (RTT): Latency measurement using lightweight probes
+Bandwidth – Higher bandwidth is prioritized using its inverse
 
-Jitter (optional): Variation in delay
+Delay (RTT) – Measured with lightweight probes
 
-Packet Loss (optional): Reliability indicator
+Jitter (optional) – Variation in delay
 
-Weights (a0–a4): Configurable by administrators to prioritize specific needs
+Packet Loss (optional) – Reliability indicator
+
+Weights (a₀–a₄) – Configurable constants set by administrators to prioritize specific needs
 
 👉 This enables flexible routing decisions for high-throughput, low-latency, or reliability-focused networks.
 
